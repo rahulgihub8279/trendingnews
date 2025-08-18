@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Newsitem from "./Newsitem";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
@@ -18,9 +18,9 @@ const News = (props) => {
     let data = await fetch(url);
     let parseData = await data.json();
     props.setprogress(60);
-    setArticles(articles.concat(parseData.articles));
+    setArticles((prev) => prev.concat(parseData.articles || []));
     props.setprogress(80);
-    settotalResults(parseData.totalResults);
+    settotalResults(parseData.totalResults || 0);
     props.setprogress(100);
     setLoading(false);
   };
@@ -41,11 +41,10 @@ const News = (props) => {
     }&pageSize=${props.pageSize}`;
     setPage(page + 1);
     let data = await fetch(url);
-    // loading(true);
     let parseData = await data.json();
     // loading(false);
-    setArticles(articles.concat(parseData.articles));
-    settotalResults(parseData.totalResults);
+    setArticles((prev) => prev.concat(parseData.articles || []));
+    settotalResults(parseData.totalResults || 0);
   };
   return (
     <>

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 import News from "./components/News";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
 
 const App = () => {
-  const apikey = process.env.REACT_APP_NEWS_API;
+  const apikey = "cb5a4dcfac11449ab1293684ed818586";
   const [progress, setProgress] = useState(0);
 
   return (
