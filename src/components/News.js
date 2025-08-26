@@ -12,7 +12,7 @@ const News = (props) => {
 
   const updateNews = async () => {
     props.setprogress(0);
-    const url = `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page}&pageSize=${props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page}&pageSize=${props.pageSize}`;
     setLoading(true);
     props.setprogress(30);
     let data = await fetch(url);
@@ -102,4 +102,5 @@ News.propTypes = {
   setprogress: PropTypes.func.isRequired,
 };
 export default News;
+
 
